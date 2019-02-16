@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Add Items</ion-title>
+    <ion-buttons end>
+        <button ion-button icon-right block clear menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+      </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <form [formGroup]="AddItemForm" >
+          <ion-row>
+              <ion-col col-12>
+                <!--   <ion-item>
+                      <ion-label>Date</ion-label>
+                      <ion-datetime displayFormat="YYYY/MM/DD" formControlName="date" required=""></ion-datetime>
+                    </ion-item> -->
+              <ion-item> 
+                  <ion-label>Caterogy Type</ion-label>
+                  <ion-select multiple="true" formControlName="Category">
+                    <ion-option *ngFor="let expense of expenses; let i=index" value="{{expense.name}}">
+                      {{expense.name}}
+                    </ion-option>
+                  </ion-select>
+                </ion-item>
+                <ion-item>
+                    <ion-label>Description</ion-label>
+                    <ion-input type="text" placeholder="Description" formControlName="description" required="" ></ion-input>
+                  </ion-item>
+                  <!--<ion-item>
+                      <ion-label>Description</ion-label>
+                      <ion-input type="number" placeholder="Amount" formControlName="Amount" required="" ></ion-input>
+                    </ion-item> -->
+              </ion-col>
+              </ion-row>
+  </form>
+  <button ion-button block (click)="saveData()">Add Items</button>
+</ion-content>
